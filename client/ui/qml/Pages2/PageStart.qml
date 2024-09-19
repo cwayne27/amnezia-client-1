@@ -90,16 +90,6 @@ PageType {
                 PageController.closePage()
             }
         }
-
-        // function onForceTabBarActiveFocus() {
-        //     homeTabButton.focus = true
-        //     tabBar.forceActiveFocus()
-        // }
-
-        // function onForceStackActiveFocus() {
-        //     homeTabButton.focus = true
-        //     tabBarStackView.forceActiveFocus()
-        // }
     }
 
     Connections {
@@ -307,10 +297,6 @@ PageType {
                 tabBar.currentIndex = 0
                 FocusController.setRootItem(null) // TODO: move to do it automaticaly
             }
-
-            // KeyNavigation.tab: shareTabButton
-            // Keys.onEnterPressed: this.clicked()
-            // Keys.onReturnPressed: this.clicked()
         }
 
         TabImageButtonType {
@@ -336,8 +322,6 @@ PageType {
                 tabBarStackView.goToTabBarPage(PageEnum.PageShare)
                 tabBar.currentIndex = 1
             }
-
-            // KeyNavigation.tab: settingsTabButton
         }
 
         TabImageButtonType {
@@ -350,8 +334,6 @@ PageType {
                 tabBarStackView.goToTabBarPage(PageEnum.PageSettings)
                 tabBar.currentIndex = 2
             }
-
-            // KeyNavigation.tab: plusTabButton
         }
 
         TabImageButtonType {
@@ -364,8 +346,6 @@ PageType {
                 tabBarStackView.goToTabBarPage(PageEnum.PageSetupWizardConfigSource)
                 tabBar.currentIndex = 3
             }
-
-            // Keys.onTabPressed: PageController.forceStackActiveFocus()
         }
     }
 }
