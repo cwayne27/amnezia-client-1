@@ -156,6 +156,7 @@ class AmneziaActivity : QtActivity() {
      * Activity overloaded methods
      */
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d(TAG, "Billing provider: ${BillingProvider().type()}")
         super.onCreate(savedInstanceState)
         Log.d(TAG, "Create Amnezia activity: $intent")
         window.apply {
@@ -706,6 +707,9 @@ class AmneziaActivity : QtActivity() {
             }
         }
     }
+
+    @Suppress("unused")
+    fun isPlay(): Boolean = BuildConfig.FLAVOR == "play"
 
     /**
      * Utils methods

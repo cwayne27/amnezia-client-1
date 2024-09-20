@@ -20,6 +20,7 @@ android {
     namespace = "org.amnezia.vpn"
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
 
@@ -39,17 +40,6 @@ android {
 
         // keeps language resources for only the locales specified below
         resourceConfigurations += listOf("en", "ru", "b+zh+Hans")
-    }
-
-    sourceSets {
-        getByName("main") {
-            manifest.srcFile("AndroidManifest.xml")
-            java.setSrcDirs(listOf("src"))
-            res.setSrcDirs(listOf("res"))
-            // androyddeployqt creates the folders below
-            assets.setSrcDirs(listOf("assets"))
-            jniLibs.setSrcDirs(listOf("libs"))
-        }
     }
 
     signingConfigs {
@@ -74,6 +64,36 @@ android {
             initWith(getByName("release"))
             signingConfig = null
             matchingFallbacks += "release"
+        }
+    }
+
+    flavorDimensions += "billing"
+
+    productFlavors {
+        create("oss") {
+            dimension = "billing"
+        }
+        create("play") {
+            dimension = "billing"
+        }
+    }
+
+    sourceSets {
+        getByName("main") {
+            manifest.srcFile("AndroidManifest.xml")
+            java.setSrcDirs(listOf("src"))
+            res.setSrcDirs(listOf("res"))
+            // androyddeployqt creates the folders below
+            assets.setSrcDirs(listOf("assets"))
+            jniLibs.setSrcDirs(listOf("libs"))
+        }
+
+        getByName("oss") {
+            java.setSrcDirs(listOf("oss"))
+        }
+
+        getByName("play") {
+            java.setSrcDirs(listOf("play"))
         }
     }
 
@@ -122,4 +142,9 @@ dependencies {
     implementation(libs.google.mlkit)
     implementation(libs.androidx.datastore)
     implementation(libs.androidx.biometric)
+
+    playImplementation(project(":billing"))
 }
+
+fun DependencyHandler.playImplementation(dependency: Any): Dependency? =
+    add("playImplementation", dependency)
