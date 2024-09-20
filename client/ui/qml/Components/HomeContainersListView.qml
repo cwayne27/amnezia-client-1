@@ -30,29 +30,11 @@ ListView {
 
     // property int currentFocusIndex: 0
 
-    snapMode: ListView.SnapToItem
+    // snapMode: ListView.SnapToItem
 
     // ScrollBar.vertical: ScrollBar {}
 
     property bool isFocusable: true
-
-    Keys.onTabPressed: {
-        console.debug("--> Tab is pressed on HomeContainersListView: ", objectName)
-        FocusController.nextKeyTabItem()
-    }
-
-    Keys.onBacktabPressed: {
-        console.debug("--> Shift+Tab is pressed on HomeContainersListView: ", objectName)
-        FocusController.previousKeyTabItem()
-    }
-
-    Keys.onRightPressed: {
-        FocusController.nextKeyTabItem()
-    }
-    
-    Keys.onLeftPressed: {
-        FocusController.previousKeyTabItem()
-    }
 
     // activeFocusOnTab: true
     // onActiveFocusChanged: {

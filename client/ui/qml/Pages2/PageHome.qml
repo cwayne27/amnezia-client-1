@@ -327,8 +327,6 @@ PageType {
                             rootWidth: root.width
                             height: 500 // TODO: make calculated
 
-                            // isFocusable: false // TODO: this is a workaround. Need to remove it
-
                             Connections {
                                 objectName: "rowLayoutConnections"
 

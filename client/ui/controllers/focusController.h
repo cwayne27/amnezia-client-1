@@ -33,12 +33,14 @@ signals:
 
 public slots:
     void resetFocus();
-    void reload();
+    void onReload();
     void setRootItem(QQuickItem* item);
 
 private:
+    void nextItem(bool isForwardOrder);
     void focusNextListViewItem();
     void focusPreviousListViewItem();
+    void reload(bool isForwardOrder);
 
     QQmlApplicationEngine* m_engine; // Pointer to engine to get root object
     QList<QObject*> m_focusChain; // List of current objects to be focused

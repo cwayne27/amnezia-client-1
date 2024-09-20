@@ -21,7 +21,7 @@ PageType {
 
     property var installedProtocolsCount
 
-    onFocusChanged: settingsContainersListView.forceActiveFocus()
+    // onFocusChanged: settingsContainersListView.forceActiveFocus()
     signal lastItemTabClickedSignal()
 
     FlickableType {

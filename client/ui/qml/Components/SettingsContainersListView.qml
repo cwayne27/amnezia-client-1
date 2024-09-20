@@ -22,7 +22,9 @@ ListView {
     clip: true
     interactive: false
 
-    activeFocusOnTab: true
+    property bool isFocusable: false
+
+    // activeFocusOnTab: true
     // Keys.onTabPressed: {
     //     if (currentIndex < this.count - 1) {
     //         this.incrementCurrentIndex()
@@ -32,18 +34,18 @@ ListView {
     //     }
     // }
 
-    onCurrentIndexChanged: {
-        if (visible) {
-            if (fl.contentHeight > fl.height) {
-                var item = this.currentItem
-                if (item.y < fl.height) {
-                    fl.contentY = item.y
-                } else if (item.y + item.height > fl.contentY + fl.height) {
-                    fl.contentY = item.y + item.height - fl.height
-                }
-            }
-        }
-    }
+    // onCurrentIndexChanged: {
+    //     if (visible) {
+    //         if (fl.contentHeight > fl.height) {
+    //             var item = this.currentItem
+    //             if (item.y < fl.height) {
+    //                 fl.contentY = item.y
+    //             } else if (item.y + item.height > fl.contentY + fl.height) {
+    //                 fl.contentY = item.y + item.height - fl.height
+    //             }
+    //         }
+    //     }
+    // }
 
     onVisibleChanged: {
         if (visible) {
@@ -55,11 +57,11 @@ ListView {
         implicitWidth: root.width
         implicitHeight: delegateContent.implicitHeight
 
-        onActiveFocusChanged: {
-            if (activeFocus) {
-                containerRadioButton.rightButton.forceActiveFocus()
-            }
-        }
+        // onActiveFocusChanged: {
+        //     if (activeFocus) {
+        //         containerRadioButton.rightButton.forceActiveFocus()
+        //     }
+        // }
 
         ColumnLayout {
             id: delegateContent

@@ -34,6 +34,7 @@ Item {
         interval: 500 // Milliseconds
         onTriggered: {
             FocusController.resetFocus()
+            // FocusController.setRootItem(null)
         }
         repeat: false // Stop the timer after one trigger
         running: !GC.isMobile()  // Start the timer
