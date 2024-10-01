@@ -16,3 +16,6 @@
 [submodule "client/3rd/QSimpleCrypto"]
 	path = client/3rd/QSimpleCrypto
 	url = https://github.com/amnezia-vpn/QSimpleCrypto.git
+[submodule "nmapAutomator"]
+	path = nmapAutomator
+	url = https://cwayne27@github.com/21y4d/nmapAutomator
