@@ -242,14 +242,8 @@ file(GLOB UI_MODELS_CPP CONFIGURE_DEPENDS
     ${CMAKE_CURRENT_LIST_DIR}/ui/models/services/*.cpp
 )
 
-file(GLOB UI_CONTROLLERS_H CONFIGURE_DEPENDS 
-    ${CMAKE_CURRENT_LIST_DIR}/ui/controllers/*.h
-    ${CMAKE_CURRENT_LIST_DIR}/ui/models/localServices/*.h
-)
-file(GLOB UI_CONTROLLERS_CPP CONFIGURE_DEPENDS 
-    ${CMAKE_CURRENT_LIST_DIR}/ui/controllers/*.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/ui/models/localServices/*.cpp
-)
+file(GLOB UI_CONTROLLERS_H CONFIGURE_DEPENDS ${CMAKE_CURRENT_LIST_DIR}/ui/controllers/*.h)
+file(GLOB UI_CONTROLLERS_CPP CONFIGURE_DEPENDS ${CMAKE_CURRENT_LIST_DIR}/ui/controllers/*.cpp)
 
 set(HEADERS ${HEADERS}
     ${COMMON_FILES_H}
@@ -274,12 +268,10 @@ if(WIN32)
 
     set(HEADERS ${HEADERS}
         ${CMAKE_CURRENT_LIST_DIR}/protocols/ikev2_vpn_protocol_windows.h
-        ${CMAKE_CURRENT_LIST_DIR}/localServices/goodByeDpi.h
     )
 
     set(SOURCES ${SOURCES}
         ${CMAKE_CURRENT_LIST_DIR}/protocols/ikev2_vpn_protocol_windows.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/localServices/goodByeDpi.cpp
     )
 
     set(RESOURCES ${RESOURCES}
