@@ -47,19 +47,11 @@ bool PageController::isStartPageVisible()
     }
 }
 
-QString PageController::getPagePath(PageLoader::PageEnum page, PageLoader::FolderEnum folder)
+QString PageController::getPagePath(PageLoader::PageEnum page)
 {
     QMetaEnum metaEnum = QMetaEnum::fromType<PageLoader::PageEnum>();
     QString pageName = metaEnum.valueToKey(static_cast<int>(page));
-
-    metaEnum = QMetaEnum::fromType<PageLoader::FolderEnum>();
-    QString folderName = "";
-    if (metaEnum.value(static_cast<int>(folder)) != static_cast<int>(PageLoader::FolderEnum::Root)) {
-        folderName = metaEnum.valueToKey(static_cast<int>(folder));
-        folderName += "/";
-    }
-
-    return "qrc:/ui/qml/Pages2/" + folderName + pageName + ".qml";
+    return "qrc:/ui/qml/Pages2/" + pageName + ".qml";
 }
 
 void PageController::closeWindow()

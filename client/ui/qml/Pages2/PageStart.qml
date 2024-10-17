@@ -60,8 +60,8 @@ PageType {
             tabBarStackView.pop()
         }
 
-        function onGoToPage(page, folder, slide) {
-            var pagePath = PageController.getPagePath(page, folder)
+        function onGoToPage(page, slide) {
+            var pagePath = PageController.getPagePath(page)
 
             if (slide) {
                 tabBarStackView.push(pagePath, { "objectName" : pagePath }, StackView.PushTransition)
@@ -209,14 +209,6 @@ PageType {
                                    "disabled after 14 days, and all log files will be deleted.")
                 PageController.showNotificationMessage(message)
             }
-        }
-    }
-
-    Connections {
-        target: LocalServicesController
-
-        function onErrorOccurred(error) {
-            PageController.showErrorMessage(error)
         }
     }
 

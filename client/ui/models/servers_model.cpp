@@ -88,10 +88,9 @@ QVariant ServersModel::data(const QModelIndex &index, int role) const
     const QJsonObject server = m_servers.at(index.row()).toObject();
     const auto apiConfig = server.value(configKey::apiConfig).toObject();
     const auto configVersion = server.value(config_key::configVersion).toInt();
-    const auto isGoodbyeDpi = server.value(config_key::isGoodbyeDpi).toBool(false);
     switch (role) {
     case NameRole: {
-        if (configVersion || isGoodbyeDpi) {
+        if (configVersion) {
             return server.value(config_key::name).toString();
         }
         auto name = server.value(config_key::description).toString();
@@ -101,10 +100,6 @@ QVariant ServersModel::data(const QModelIndex &index, int role) const
         return name;
     }
     case ServerDescriptionRole: {
-        if (isGoodbyeDpi) {
-            return server.value(config_key::description).toString();
-        }
-
         auto description = getServerDescription(server, index.row());
         return configVersion ? description : description + server.value(config_key::hostName).toString();
     }
@@ -148,9 +143,6 @@ QVariant ServersModel::data(const QModelIndex &index, int role) const
     case HasAmneziaDns: {
         QString primaryDns = server.value(config_key::dns1).toString();
         return primaryDns == protocols::dns::amneziaDnsIp;
-    }
-    case IsGoodByeDpiRole: {
-        return isGoodbyeDpi;
     }
     }
 
@@ -216,12 +208,6 @@ QString ServersModel::getServerDescription(const QJsonObject &server, const int 
 const QString ServersModel::getDefaultServerDescriptionCollapsed()
 {
     const QJsonObject server = m_servers.at(m_defaultServerIndex).toObject();
-
-    const auto isGoodbyeDpi = server.value(config_key::isGoodbyeDpi).toBool(false);
-    if (isGoodbyeDpi) {
-        return server.value(config_key::description).toString();
-    }
-
     const auto configVersion = server.value(config_key::configVersion).toInt();
     auto description = getServerDescription(server, m_defaultServerIndex);
     if (configVersion) {
@@ -236,12 +222,6 @@ const QString ServersModel::getDefaultServerDescriptionCollapsed()
 const QString ServersModel::getDefaultServerDescriptionExpanded()
 {
     const QJsonObject server = m_servers.at(m_defaultServerIndex).toObject();
-
-    const auto isGoodbyeDpi = server.value(config_key::isGoodbyeDpi).toBool(false);
-    if (isGoodbyeDpi) {
-        return server.value(config_key::description).toString();
-    }
-
     const auto configVersion = server.value(config_key::configVersion).toInt();
     auto description = getServerDescription(server, m_defaultServerIndex);
     if (configVersion) {
@@ -390,8 +370,6 @@ QHash<int, QByteArray> ServersModel::roleNames() const
     roles[IsCountrySelectionAvailableRole] = "isCountrySelectionAvailable";
     roles[ApiAvailableCountriesRole] = "apiAvailableCountries";
     roles[ApiServerCountryCodeRole] = "apiServerCountryCode";
-
-    roles[IsGoodByeDpiRole] = "isGoodbyeDpi";
     return roles;
 }
 

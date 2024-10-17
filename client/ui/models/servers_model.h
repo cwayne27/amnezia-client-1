@@ -38,9 +38,7 @@ public:
         ApiAvailableCountriesRole,
         ApiServerCountryCodeRole,
 
-        HasAmneziaDns,
-
-        IsGoodByeDpiRole
+        HasAmneziaDns
     };
 
     ServersModel(std::shared_ptr<Settings> settings, QObject *parent = nullptr);
