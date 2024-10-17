@@ -101,8 +101,6 @@ namespace amnezia
 
         constexpr char clientId[] = "clientId";
 
-        constexpr char isGoodbyeDpi[] = "is_goodbye_dpi";
-
     }
 
     namespace protocols
@@ -257,8 +255,7 @@ namespace amnezia
             TorWebSite,
             Dns,
             Sftp,
-            Socks5Proxy,
-            GoodyeDPI
+            Socks5Proxy
         };
         Q_ENUM_NS(Proto)
 
