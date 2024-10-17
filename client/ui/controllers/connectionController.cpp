@@ -44,13 +44,6 @@ void ConnectionController::openConnection()
 
     int serverIndex = m_serversModel->getDefaultServerIndex();
     QJsonObject serverConfig = m_serversModel->getServerConfig(serverIndex);
-
-    const auto isGoodbyeDpi = serverConfig.value(config_key::isGoodbyeDpi).toBool(false);
-    if (isGoodbyeDpi) {
-        emit startLocalService();
-        return;
-    }
-
     auto configVersion = serverConfig.value(config_key::configVersion).toInt();
 
     emit m_vpnConnection->connectionStateChanged(Vpn::ConnectionState::Preparing);
@@ -72,15 +65,6 @@ void ConnectionController::openConnection()
 
 void ConnectionController::closeConnection()
 {
-    int serverIndex = m_serversModel->getDefaultServerIndex();
-    QJsonObject serverConfig = m_serversModel->getServerConfig(serverIndex);
-
-    const auto isGoodbyeDpi = serverConfig.value(config_key::isGoodbyeDpi).toBool(false);
-    if (isGoodbyeDpi) {
-        emit stopLocalService();
-        return;
-    }
-
     emit disconnectFromVpn();
 }
 

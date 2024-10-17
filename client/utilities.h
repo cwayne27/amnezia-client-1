@@ -33,7 +33,6 @@ public:
     static QString wireguardExecPath();
     static QString certUtilPath();
     static QString tun2socksPath();
-    static QString goodbyedpiPath();
 
 #ifdef Q_OS_WIN
     static bool signalCtrl(DWORD dwProcessId, DWORD dwCtrlEvent);

@@ -61,9 +61,6 @@ signals:
     void updateApiConfigFromTelegram();
     void configFromApiUpdated();
 
-    void startLocalService();
-    void stopLocalService();
-
 private:
     Vpn::ConnectionState getCurrentConnectionState();
     bool isProtocolConfigExists(const QJsonObject &containerConfig, const DockerContainer container);

@@ -111,8 +111,6 @@ PageType {
                             id: server
                             Layout.fillWidth: true
 
-                            visible: !isGoodbyeDpi
-
                             text: name
                             parentFlickable: fl
                             descriptionText: {

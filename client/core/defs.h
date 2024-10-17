@@ -80,7 +80,6 @@ namespace amnezia
         ExecutableMissing = 604,
         XrayExecutableMissing = 605,
         Tun2SockExecutableMissing = 606,
-        GoodByeDPIExecutableMissing = 607,
 
         // VPN errors
         OpenVpnAdaptersInUseError = 700,
